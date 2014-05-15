@@ -1,19 +1,4 @@
 class RPS
-  def input
-    puts "choose 'rock' 'paper' or 'scissor'"
-    user_choice = gets.chomp
-    while user_choice != 'rock' && user_choice != 'paper' && user_choice != 'scissor'
-      puts "please enter a valid choice of 'rock' 'paper' or 'scissor'"
-      user_choice = gets.chomp
-    end
-    puts ""
-    user_choice
-  end
-
-  def ai_input
-    ["rock", "paper", "scissor"].sample
-  end
-
   def initialize
     puts "*Welcome to Rock Paper Scissors!"
     puts "*Best out of 3!"
@@ -35,6 +20,21 @@ class RPS
       end
     end
     totall  
+  end
+
+  def ai_input
+    ["rock", "paper", "scissor"].sample
+  end
+
+  def input
+    puts "choose 'rock' 'paper' or 'scissor'"
+    user_choice = gets.chomp
+    while user_choice != 'rock' && user_choice != 'paper' && user_choice != 'scissor'
+      puts "please enter a valid choice of 'rock' 'paper' or 'scissor'"
+      user_choice = gets.chomp
+    end
+    puts ""
+    user_choice
   end
 
   def win
