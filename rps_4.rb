@@ -4,14 +4,14 @@ class RPS
     puts "*Best out of 3!"
     @tally_player = 0
     @tally_computer = 0
-    @defeat = { rock: 'scissor', paper: 'rock', scissor: 'paper' }
+    defeat = { rock: 'scissor', paper: 'rock', scissor: 'paper' }
     3.times do
       ai_move = ai_input
       player_move = input
       if player_move == ai_move
         puts "Tied with computer. Try again!"
         puts ""
-      elsif ai_move == @defeat[player_move.to_sym]
+      elsif ai_move == defeat[player_move.to_sym]
         win
         @tally_player += 1
       else
