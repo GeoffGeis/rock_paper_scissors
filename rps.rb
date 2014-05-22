@@ -1,12 +1,34 @@
 class RPS
   def initialize
-    @tally = 0
+    puts "*Welcome to Rock Paper Scissors!"; puts "*Best out of 3!"
+    @tally_player, @tally_computer = 0, 0
     @defeat = { rock: 'scissor', paper: 'rock', scissor: 'paper' }
+    game
+  end
+
+  def game
+    3.times do
+      ai_move = ai_input
+      player_move = input
+      if player_move == ai_move
+        puts "Tied with computer. Try again!"
+        puts ""
+      elsif ai_move == @defeat[player_move.to_sym]
+        puts "YOU HAVE WON"; puts ""
+        @tally_player += 1
+      else
+        puts "YOU HAVE LOST"; puts ""
+        @tally_computer += 1
+      end
+    end
+    totall  
+  end
+
+  def ai_input
+    ["rock", "paper", "scissor"].sample
   end
 
   def input
-    puts "*Welcome to Rock Paper Scissors!"
-    puts "*Best out of 3!"
     puts "choose 'rock' 'paper' or 'scissor'"
     user_choice = gets.chomp
     while user_choice != 'rock' && user_choice != 'paper' && user_choice != 'scissor'
@@ -17,40 +39,11 @@ class RPS
     user_choice
   end
 
-  def ai_input
-    ["rock", "paper", "scissor"].sample
-  end
-
-  def conditional
-    3.times do
-      ai_move = ai_input
-      player_move = input
-      if player_move == ai_move
-        puts "Tied with computer. Try again!"
-        puts ""
-      elsif ai_move == @defeat[player_move.to_sym]
-        win
-        @tally += 1
-      else
-        lose
-        @tally -= 1
-      end
-    end  
-  end
-
-  def win
-    puts "YOU HAVE WON"
-    puts ""
-  end
-  
-  def lose
-    puts "YOU HAVE LOST"
-    puts ""
-  end
-
   def totall
-    if @tally >= 1 
+    if @tally_player > @tally_computer
       puts "YOU WIN BEST OF 3"
+    elsif @tally_player == @tally_computer
+      puts "TIE"
     else
       puts "YOU LOSE OF 3"
     end
@@ -58,5 +51,3 @@ class RPS
 end
 
 r = RPS.new
-r.conditional
-r.totall
